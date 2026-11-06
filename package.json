@@ -1,0 +1,23 @@
+{
+  "name": "depois",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monólito para guardar e marcar filmes, séries, músicas e links para ver depois.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @depois/shared && concurrently -n shared,api,web -c white,magenta,cyan \"npm run dev -w @depois/shared\" \"npm run dev -w @depois/api\" \"npm run dev -w @depois/web\"",
+    "build": "npm run build -w @depois/shared && npm run build -w @depois/api && npm run build -w @depois/web",
+    "test": "npm run test -w @depois/shared && npm run build -w @depois/shared && npm run test -w @depois/api && npm run test -w @depois/web",
+    "test:e2e": "npm run build -w @depois/shared && npm run test:e2e -w @depois/api",
+    "start": "concurrently -n api,web -c magenta,cyan \"npm run start -w @depois/api\" \"npm run start -w @depois/web\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
