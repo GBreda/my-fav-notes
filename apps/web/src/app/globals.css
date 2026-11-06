@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f3ecef;
+  --surface: #fffdfd;
+  --surface-2: #f8f1f4;
+  --text: #24161c;
+  --muted: #6b4e5a;
+  --line: #eadde3;
+  --brand: #a83264;
+  --brand-dark: #8b274f;
+  --brand-soft: #f8e3ec;
+  --on-brand: #ffffff;
+  --danger: #9f1239;
+  --ok: #0f766e;
+  --shadow: 0 16px 40px rgba(88, 24, 48, 0.08);
+  --glow: rgba(168, 50, 100, 0.2);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #12090d;
+  --surface: #1d1217;
+  --surface-2: #2a1a21;
+  --text: #f8eef2;
+  --muted: #d3bec6;
+  --line: #423038;
+  --brand: #a83264;
+  --brand-dark: #c4457c;
+  --brand-soft: #3c2030;
+  --on-brand: #ffffff;
+  --danger: #fda4af;
+  --ok: #5eead4;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --glow: rgba(168, 50, 100, 0.42);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #12090d;
+    --surface: #1d1217;
+    --surface-2: #2a1a21;
+    --text: #f8eef2;
+    --muted: #d3bec6;
+    --line: #423038;
+    --brand: #a83264;
+    --brand-dark: #c4457c;
+    --brand-soft: #3c2030;
+    --on-brand: #ffffff;
+    --danger: #fda4af;
+    --ok: #5eead4;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    --glow: rgba(168, 50, 100, 0.42);
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(900px 420px at 110% -10%, var(--glow), transparent 55%),
+    radial-gradient(680px 380px at -20% 10%, var(--glow), transparent 50%),
+    var(--bg);
+  color: var(--text);
+}
+
+::placeholder {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+::selection {
+  background: #a83264;
+  color: #fff;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #a83264;
+  outline-offset: 3px;
+}
+
+.chip-row {
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 28px), transparent);
+}
+
+.chip-row::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
